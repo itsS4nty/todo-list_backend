@@ -1,4 +1,4 @@
-import { _Response } from '../response';
+import { _Response } from '@customTypes/response';
 
 export type DutiesData = {
     id: number;

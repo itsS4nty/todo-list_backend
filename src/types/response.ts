@@ -1,4 +1,4 @@
-import { HttpStatus } from '../enums/httpStatus';
+import { HttpStatus } from '@enums/httpStatus';
 
 export type _Response<T> = {
     error: boolean;

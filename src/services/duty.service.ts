@@ -1,8 +1,8 @@
 import { log } from 'console';
-import { query } from '../database/connect';
-import { DutyStatus } from '../enums/dutyStatus';
 import { QueryResult } from 'pg';
-import { IDuty } from '../models/duty.interface';
+import { query } from '@database/connect';
+import { DutyStatus } from '@enums/dutyStatus';
+import { IDuty } from 'models/duty.interface';
 
 /**
  * Retrieves duties from the database, filtering based on their deletion status.

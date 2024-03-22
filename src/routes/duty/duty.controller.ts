@@ -1,8 +1,8 @@
 import Router from 'koa-router';
-import { validateSchemaSafe } from '../../lib/schemas';
-import { CreateDuty, DeleteDuty, FindDuties, UpdateDuty } from '../../types/duty/request';
-import { CreateDutyResponse, DeleteDutyResponse, GetDutiesResponse, UpdateDutyRespone } from '../../types/duty/response';
-import { addDuty, delDuty, getDuties, updDuty } from '../../controllers/duty/duty.controller';
+import { FindDuties, CreateDuty, UpdateDuty, DeleteDuty } from '@customTypes/duty/request';
+import { GetDutiesResponse, CreateDutyResponse, UpdateDutyRespone, DeleteDutyResponse } from '@customTypes/duty/response';
+import { validateSchemaSafe } from '@lib/schemas';
+import { getDuties, addDuty, updDuty, delDuty } from 'controllers/duty/duty.controller';
 
 const dutyRouter = new Router({
     prefix: '/duty',

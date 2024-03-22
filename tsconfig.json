@@ -15,7 +15,18 @@
         "types": ["node"],
         "lib": ["ESNext", "DOM"],
         "strictNullChecks": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@customTypes/*": ["types/*"],
+            "@services/*": ["services/*"],
+            "@database/*": ["database/*"],
+            "@enums/*": ["enums/*"],
+            "@lib/*": ["lib/*"],
+            "@zodSchemas/*": ["lib/schemas/models/*"],
+            "@routes/*": ["routes/*"],
+            "@utils/*": ["utils/*"],
+        }
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "dist"]
