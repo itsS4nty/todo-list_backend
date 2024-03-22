@@ -1,9 +1,9 @@
 import { DutyStatus } from '../enums/dutyStatus';
 
 export interface IDuty {
-    id: string;
+    id: number;
     name: string;
     status: DutyStatus;
-    createdAt: number;
-    modifiedAt: number;
+    created_at: number;
+    modified_at: number;
 }
