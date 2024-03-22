@@ -10,7 +10,7 @@ export class ApiServer {
     public constructor() {}
 
     listen = async () => {
-        const PORT = process.env.PORT || 3000;
+        const PORT = process.env.PORT || 3030;
         this.server = app.listen(PORT, async () => {
             console.log(`When it's ${new Date().toLocaleString()} we are getting ready`);
             console.log(`Starting in ${process.env.NODE_ENV} mode`);
