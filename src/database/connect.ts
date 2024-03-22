@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, QueryResult, QueryResultRow } from 'pg';
 
 const { PSQL_USER, PQSL_HOST, PSQL_DATABASE, PSQL_PASSWORD, PSQL_PORT } = process.env;
 const pool = new Pool({
@@ -24,4 +24,4 @@ export const createTables = async () => {
     });
 };
 
-export const query = (text: string, params?: unknown[]) => pool.query(text, params);
+export const query = <T extends QueryResultRow>(text: string, params?: unknown[]): Promise<QueryResult<T>> => pool.query(text, params);

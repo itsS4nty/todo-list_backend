@@ -1,9 +1,15 @@
 import { ZodIssue } from 'zod';
-import { emptySchema } from './models/emptySchema';
+import { findDutiesSchema } from './models/findDutiesSchema';
+import { createDutySchema } from './models/createDutySchema';
+import { updateDutySchema } from './models/updateDutySchema';
+import { deleteDutySchema } from './models/deleteDutySchema';
 
 const schemaCatalog = {
-    EmptySchema: emptySchema,
-} as const;
+    FindDuties: findDutiesSchema,
+    CreateDuty: createDutySchema,
+    UpdateDuty: updateDutySchema,
+    DeleteDuty: deleteDutySchema,
+};
 
 type SchemaCatalog = typeof schemaCatalog;
 

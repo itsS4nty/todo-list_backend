@@ -1,7 +1,8 @@
 import { log } from 'console';
 import { query } from '../database/connect';
 import { DutyStatus } from '../enums/dutyStatus';
-import { QueryResult, QueryResultRow } from 'pg';
+import { QueryResult } from 'pg';
+import { IDuty } from '../models/duty.interface';
 
 /**
  * Retrieves duties from the database, filtering based on their deletion status.
@@ -14,12 +15,12 @@ import { QueryResult, QueryResultRow } from 'pg';
  * @returns {Promise<QueryResult<T> | null>} A promise that resolves to the retrieved duties matching the specified deletion status.
  *         The promise returns `null` if an error occurs during the database query execution.
  */
-export const getDuties = async <T extends QueryResultRow>(
+export const findDuties = async (
     deletedDuties: boolean,
-): Promise<QueryResult<T> | null> => {
+): Promise<QueryResult<IDuty> | null> => {
     try {
         const operator = deletedDuties ? '=' : '!=';
-        const data = await query(`SELECT * FROM duties WHERE status ${operator} $1`, [
+        const data = await query<IDuty>(`SELECT * FROM duties WHERE status ${operator} $1`, [
             DutyStatus.DELETED,
         ]);
         return data;
