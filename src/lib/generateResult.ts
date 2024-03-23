@@ -1,4 +1,4 @@
-import { HttpStatus } from '@enums/httpStatus';
+import { HttpStatus } from '../enums/httpStatus';
 
 export const generateResult = <T>(value: T) => {
     return {

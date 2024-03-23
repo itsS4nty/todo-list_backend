@@ -1,8 +1,8 @@
 import { ZodIssue } from 'zod';
-import { findDutiesSchema } from '@zodSchemas/findDutiesSchema';
-import { createDutySchema } from '@zodSchemas/createDutySchema';
-import { updateDutySchema } from '@zodSchemas/updateDutySchema';
-import { deleteDutySchema } from '@zodSchemas/deleteDutySchema';
+import { createDutySchema } from './models/createDutySchema';
+import { deleteDutySchema } from './models/deleteDutySchema';
+import { findDutiesSchema } from './models/findDutiesSchema';
+import { updateDutySchema } from './models/updateDutySchema';
 
 const schemaCatalog = {
     FindDuties: findDutiesSchema,

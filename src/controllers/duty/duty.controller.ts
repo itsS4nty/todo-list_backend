@@ -1,8 +1,8 @@
-import { findDuties, insertDuty, updateDuty, fullDeleteDuty, deleteDuty } from '@services/duty.service';
-import { FindDuties, CreateDuty, UpdateDuty, DeleteDuty } from '@customTypes/duty/request';
-import { GetDutiesResponse, DutiesData, CreateDutyResponse, UpdateDutyRespone, DeleteDutyResponse } from '@customTypes/duty/response';
-import { HttpStatus } from '@enums/httpStatus';
-import { generateResult } from '@lib/generateResult';
+import { HttpStatus } from '../../enums/httpStatus';
+import { generateResult } from '../../lib/generateResult';
+import { findDuties, insertDuty, updateDuty, fullDeleteDuty, deleteDuty } from '../../services/duty.service';
+import { FindDuties, CreateDuty, UpdateDuty, DeleteDuty } from '../../types/duty/request';
+import { GetDutiesResponse, DutiesData, CreateDutyResponse, UpdateDutyRespone, DeleteDutyResponse } from '../../types/duty/response';
 
 export const getDuties = async (data: FindDuties | null) => {
     const result: GetDutiesResponse = generateResult<DutiesData[]>([]);

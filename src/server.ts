@@ -3,7 +3,7 @@ import { Server } from 'http';
 import { AddressInfo } from 'net';
 import app from './app';
 import 'dotenv/config';
-import { createTables } from '@database/connect';
+import { createTables } from './database/connect';
 
 export class ApiServer {
     server!: Server;

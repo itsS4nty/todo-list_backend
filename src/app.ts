@@ -7,7 +7,7 @@ import auth from 'koa-basic-auth';
 // import jwt from 'koa-jwt';
 import serve from 'koa-static';
 import 'dotenv/config';
-import router from '@routes/router';
+import router from './routes/router';
 
 // init
 const app = new koa();

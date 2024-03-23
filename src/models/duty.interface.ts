@@ -1,4 +1,4 @@
-import { DutyStatus } from '@enums/dutyStatus';
+import { DutyStatus } from '../enums/dutyStatus';
 
 export interface IDuty {
     id: number;

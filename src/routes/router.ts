@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import dutyRouter from './duty/duty.controller';
+import dutyRouter from './duty/duty.routes';
 
 const router = new Router();
 
