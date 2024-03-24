@@ -9,18 +9,13 @@ import { IDuty } from '../models/duty.interface';
  * This function allows for the selective retrieval of duties that have either been deleted or are active,
  * depending on the value of the `deletedDuties` parameter.
  *
- * @param {boolean} deletedDuties - Controls the filter condition for the query.
- *        If `true`, the function retrieves duties that are marked as deleted.
- *        If `false`, it retrieves duties that are not marked as deleted.
+ * @param {DutyStatus} status - Controls the filter condition for the query.
  * @returns {Promise<QueryResult<T> | null>} A promise that resolves to the retrieved duties matching the specified deletion status.
  *         The promise returns `null` if an error occurs during the database query execution.
  */
-export const findDuties = async (deletedDuties: boolean): Promise<QueryResult<IDuty> | null> => {
+export const findDuties = async (status: DutyStatus): Promise<QueryResult<IDuty> | null> => {
     try {
-        const operator = deletedDuties ? '=' : '!=';
-        const data = await query<IDuty>(`SELECT * FROM duties WHERE status ${operator} $1`, [
-            DutyStatus.DELETED,
-        ]);
+        const data = await query<IDuty>('SELECT * FROM duties WHERE status = $1', [status]);
         return data;
     } catch (err) {
         log(err);

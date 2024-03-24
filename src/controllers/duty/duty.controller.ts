@@ -11,7 +11,7 @@ export const getDuties = async (data: FindDuties | null) => {
         return result;
     }
     try {
-        const _data = await findDuties(data.deleted);
+        const _data = await findDuties(data.status);
         if (!_data) {
             result.error_message = 'Error when getting duties.';
             result.status_code = HttpStatus.BAD_REQUEST;

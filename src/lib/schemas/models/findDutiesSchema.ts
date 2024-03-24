@@ -1,8 +1,6 @@
 import { z } from 'zod';
+import { DutyStatus } from '../../../enums/dutyStatus';
 
 export const findDutiesSchema = z.object({
-    deleted: z.preprocess(
-        val => (val === 'true' ? true : val === 'false' ? false : null),
-        z.boolean(),
-    ),
+    status: z.preprocess(val => Number(val), z.nativeEnum(DutyStatus)),
 });
