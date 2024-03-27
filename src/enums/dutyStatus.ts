@@ -1,5 +1,5 @@
 export enum DutyStatus {
     PENDING,
-    COMPLETED,
+    DONE,
     DELETED,
 }
