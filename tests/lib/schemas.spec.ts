@@ -13,7 +13,6 @@ describe('Schema Validation', () => {
             ['FindDuties', { status: DutyStatus.PENDING }],
             ['UpdateDuty', { id: 1, name: 'Updated Duty', status: DutyStatus.DONE }],
         ])('validates %s schema correctly', async (schemaId, data) => {
-            // (schema.safeParse as jest.Mock).mockReturnValue({ success: true, data });
             const result = validateSchemaSafe(schemaId as ZodSchema, data);
             expect(result).toEqual(data);
         });
@@ -24,11 +23,6 @@ describe('Schema Validation', () => {
             ['FindDuties', { status: undefined }],
             ['UpdateDuty', { id: -1, name: '', status: null }],
         ])('returns null for invalid %s data', (schemaId, data) => {
-            // (schema.safeParse as jest.Mock).mockReturnValue({
-            //     success: false,
-            //     error: { issues: createMockZodIssue('Invalid input') },
-            // });
-
             const result = validateSchemaSafe(schemaId as ZodSchema, data);
             expect(result).toBeNull();
         });
