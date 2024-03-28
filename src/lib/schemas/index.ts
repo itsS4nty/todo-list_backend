@@ -13,7 +13,7 @@ const schemaCatalog = {
 
 type SchemaCatalog = typeof schemaCatalog;
 
-type ZodSchema = keyof SchemaCatalog;
+export type ZodSchema = keyof SchemaCatalog;
 
 export class SchemaValidationError extends Error {
     public readonly schema: ZodSchema;

@@ -8,6 +8,7 @@ export const getDuties = async (data: FindDuties | null) => {
     const result: GetDutiesResponse = generateResult<DutiesData[]>([]);
     if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
+        result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
@@ -39,6 +40,7 @@ export const addDuty = async (data: CreateDuty | null) => {
     const result: CreateDutyResponse = generateResult<boolean>(false);
     if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
+        result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
@@ -67,6 +69,7 @@ export const updDuty = async (data: UpdateDuty | null) => {
     const result: UpdateDutyRespone = generateResult<boolean>(false);
     if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
+        result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
@@ -95,6 +98,7 @@ export const delDuty = async (data: DeleteDuty | null) => {
     const result: DeleteDutyResponse = generateResult<boolean>(false);
     if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
+        result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
