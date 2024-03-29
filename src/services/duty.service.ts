@@ -98,7 +98,7 @@ export const updateDuty = async (
 export const deleteDuty = async (id: number): Promise<boolean> => {
     try {
         const _query = 'UPDATE duties SET status = $1, modified_at = $2 WHERE id = $3';
-        const queryParams = [DutyStatus.DELETED, Date.now(),id];
+        const queryParams = [DutyStatus.DELETED, Date.now(), id];
         await query(_query, queryParams);
         return true;
     } catch (err) {
