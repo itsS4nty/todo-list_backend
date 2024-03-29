@@ -6,23 +6,25 @@ import { GetDutiesResponse, DutiesData, CreateDutyResponse, UpdateDutyRespone, D
 
 export const getDuties = async (data: FindDuties | null) => {
     const result: GetDutiesResponse = generateResult<DutiesData[]>([]);
-    if(!data) {
+    if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
         result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
         const _data = await findDuties(data.status);
-        if(!_data) {
+        if (!_data) {
             result.error_message = 'Error when getting duties.';
             result.status_code = HttpStatus.BAD_REQUEST;
             return result;
         }
 
-        result.data = _data.rows.map(r => ({
-            id: r.id,
-            name: r.name,
-        }));
+        result.data = _data.rows
+            .sort((a, b) => b.modified_at - a.modified_at)
+            .map(r => ({
+                id: r.id,
+                name: r.name,
+            }));
     } catch (err) {
         result.error_message = JSON.stringify(err);
         result.status_code = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -38,14 +40,14 @@ export const getDuties = async (data: FindDuties | null) => {
 
 export const addDuty = async (data: CreateDuty | null) => {
     const result: CreateDutyResponse = generateResult<boolean>(false);
-    if(!data) {
+    if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
         result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
         const _data = await insertDuty(data.name);
-        if(!_data) {
+        if (!_data) {
             result.error_message = 'Error when creating duty.';
             result.status_code = HttpStatus.BAD_REQUEST;
             return result;
@@ -67,14 +69,14 @@ export const addDuty = async (data: CreateDuty | null) => {
 
 export const updDuty = async (data: UpdateDuty | null) => {
     const result: UpdateDutyRespone = generateResult<boolean>(false);
-    if(!data) {
+    if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
         result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
         const _data = await updateDuty(data.id, data.name, data.status);
-        if(!_data) {
+        if (!_data) {
             result.error_message = 'Error when updating duty.';
             result.status_code = HttpStatus.BAD_REQUEST;
             return result;
@@ -96,14 +98,14 @@ export const updDuty = async (data: UpdateDuty | null) => {
 
 export const delDuty = async (data: DeleteDuty | null) => {
     const result: DeleteDutyResponse = generateResult<boolean>(false);
-    if(!data) {
+    if (!data) {
         result.error_message = 'Some properties are missing or does not have the correct type.';
         result.status_code = HttpStatus.BAD_REQUEST;
         return result;
     }
     try {
         const _data = data.fullDelete ? await fullDeleteDuty(data.id) : await deleteDuty(data.id);
-        if(!_data) {
+        if (!_data) {
             result.error_message = 'Error when deleting duty.';
             result.status_code = HttpStatus.BAD_REQUEST;
             return result;
