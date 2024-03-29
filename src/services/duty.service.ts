@@ -62,11 +62,11 @@ export const updateDuty = async (
     const queryParams = [];
     let paramIndex = 1;
 
-    if (name !== undefined) {
+    if(name !== undefined) {
         _query += ` name = $${paramIndex++},`;
         queryParams.push(name);
     }
-    if (status !== undefined) {
+    if(status !== undefined) {
         _query += ` status = $${paramIndex++},`;
         queryParams.push(status);
     }
@@ -74,7 +74,7 @@ export const updateDuty = async (
     _query = _query.replace(/,$/, '') + ` WHERE id = $${paramIndex}`;
     queryParams.push(id);
 
-    if (queryParams.length === 1) {
+    if(queryParams.length === 1) {
         log('No updates specified.');
         return false;
     }

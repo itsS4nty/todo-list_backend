@@ -30,7 +30,7 @@ export const validateSchemaSafe = <T>(schemaId: ZodSchema, data: unknown): T | n
     try {
         return validateSchema(schemaId, data) as T;
     } catch (err) {
-        if (err instanceof SchemaValidationError) {
+        if(err instanceof SchemaValidationError) {
             // log
         }
     }
@@ -41,7 +41,7 @@ export const validateSchemaStrict = (schemaId: ZodSchema, data: unknown) => {
     try {
         return validateSchema(schemaId, data);
     } catch (err) {
-        if (err instanceof SchemaValidationError) {
+        if(err instanceof SchemaValidationError) {
             // log
         }
         throw err;
@@ -56,7 +56,7 @@ const validateSchema = <T extends ZodSchema>(
 ): SchemaOutput<T> => {
     const result = schemaCatalog[schemaId].safeParse(data);
 
-    if (!result.success)
+    if(!result.success)
         throw new SchemaValidationError(schemaId, result.error.message, result.error.issues);
 
     return result.data;

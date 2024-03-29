@@ -6,7 +6,7 @@ declare global {
             PSQL_DATABASE: string;
             PSQL_PASSWORD: string;
             PSQL_PORT: number;
-            NODE_ENV: 'dev' | 'prod' | 'staging'
+            NODE_ENV: 'dev' | 'prod' | 'staging';
         }
     }
 }

@@ -15,7 +15,7 @@ dutyRouter.get('/', async ctx => {
     const result: GetDutiesResponse = await getDuties(data);
     ctx.status = result.status_code;
     ctx.body = result.data;
-    if (result.error) ctx.message = result.error_message ?? 'General error';
+    if(result.error) ctx.message = result.error_message ?? 'General error';
 });
 
 // POST
@@ -25,7 +25,7 @@ dutyRouter.post('/', async ctx => {
     const result: CreateDutyResponse = await addDuty(data);
     ctx.status = result.status_code;
     ctx.body = result.data;
-    if (result.error) ctx.message = result.error_message ?? 'General error';
+    if(result.error) ctx.message = result.error_message ?? 'General error';
 });
 
 // PUT
@@ -35,7 +35,7 @@ dutyRouter.put('/', async ctx => {
     const result: UpdateDutyRespone = await updDuty(data);
     ctx.status = result.status_code;
     ctx.body = result.data;
-    if (result.error) ctx.message = result.error_message ?? 'General error';
+    if(result.error) ctx.message = result.error_message ?? 'General error';
 });
 
 // DELETE
@@ -45,7 +45,7 @@ dutyRouter.delete('/', async ctx => {
     const result: DeleteDutyResponse = await delDuty(data);
     ctx.status = result.status_code;
     ctx.body = result.data;
-    if (result.error) ctx.message = result.error_message ?? 'General error';
+    if(result.error) ctx.message = result.error_message ?? 'General error';
 });
 
 export default dutyRouter;

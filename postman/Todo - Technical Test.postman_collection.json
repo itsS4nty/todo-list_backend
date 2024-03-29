@@ -1,210 +1,178 @@
 {
-	"info": {
-		"_postman_id": "89b5a36a-9334-45c0-b324-66f75ef17bf9",
-		"name": "Todo | Technical Test",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Duty",
-			"item": [
-				{
-					"name": "Get duties",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/{{path}}?deleted=false",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							],
-							"query": [
-								{
-									"key": "deleted",
-									"value": "false"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get deleted duties",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/{{path}}?deleted=true",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							],
-							"query": [
-								{
-									"key": "deleted",
-									"value": "true"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create duty",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Test\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/{{path}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update duty",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"name\": \"Test updated\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/{{path}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete duty",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"fullDelete\": false\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/{{path}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Full delete duty",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"fullDelete\": true\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/{{path}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"{{path}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"pm.variables.set('path', 'duty');"
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "url",
-			"value": "localhost:3030"
-		}
-	]
+    "info": {
+        "_postman_id": "89b5a36a-9334-45c0-b324-66f75ef17bf9",
+        "name": "Todo | Technical Test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Duty",
+            "item": [
+                {
+                    "name": "Get duties",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/{{path}}?deleted=false",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"],
+                            "query": [
+                                {
+                                    "key": "deleted",
+                                    "value": "false"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get deleted duties",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/{{path}}?deleted=true",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"],
+                            "query": [
+                                {
+                                    "key": "deleted",
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create duty",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Test\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{path}}",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update duty",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1,\n    \"name\": \"Test updated\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{path}}",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete duty",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1,\n    \"fullDelete\": false\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{path}}",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Full delete duty",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1,\n    \"fullDelete\": true\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{path}}",
+                            "host": ["{{url}}"],
+                            "path": ["{{path}}"]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": ["pm.variables.set('path', 'duty');"]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "url",
+            "value": "localhost:3030"
+        }
+    ]
 }

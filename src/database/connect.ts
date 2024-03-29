@@ -24,4 +24,7 @@ export const createTables = async () => {
     });
 };
 
-export const query = <T extends QueryResultRow>(text: string, params?: unknown[]): Promise<QueryResult<T>> => pool.query(text, params);
+export const query = <T extends QueryResultRow>(
+    text: string,
+    params?: unknown[],
+): Promise<QueryResult<T>> => pool.query(text, params);
