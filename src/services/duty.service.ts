@@ -71,13 +71,14 @@ export const updateDuty = async (
         queryParams.push(status);
     }
 
-    _query = _query.replace(/,$/, '') + ` WHERE id = $${paramIndex}`;
-    queryParams.push(id);
-
-    if(queryParams.length === 1) {
+    if(!queryParams.length) {
         log('No updates specified.');
         return false;
     }
+
+    _query += ` modified_at = $${paramIndex++} WHERE id = $${paramIndex}`;
+    queryParams.push(Date.now());
+    queryParams.push(id);
 
     try {
         await query(_query, queryParams);
@@ -96,8 +97,8 @@ export const updateDuty = async (
  */
 export const deleteDuty = async (id: number): Promise<boolean> => {
     try {
-        const _query = 'UPDATE duties SET status = $1 WHERE id = $2';
-        const queryParams = [DutyStatus.DELETED, id];
+        const _query = 'UPDATE duties SET status = $1, modified_at = $2 WHERE id = $3';
+        const queryParams = [DutyStatus.DELETED, Date.now(),id];
         await query(_query, queryParams);
         return true;
     } catch (err) {
