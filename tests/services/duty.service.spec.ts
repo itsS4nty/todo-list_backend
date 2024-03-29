@@ -81,8 +81,8 @@ describe('Duties Functions', () => {
             mockedQuery.mockResolvedValueOnce({});
             const result = await deleteDuty(1);
             expect(mockedQuery).toHaveBeenCalledWith(
-                'UPDATE duties SET status = $1 WHERE id = $2',
-                [DutyStatus.DELETED, 1],
+                'UPDATE duties SET status = $1, modified_at = $2 WHERE id = $3',
+                [DutyStatus.DELETED, Date.now(), 1],
             );
             expect(result).toBe(true);
         });
